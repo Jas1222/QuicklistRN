@@ -1,5 +1,9 @@
-import { AppRegistry } from 'react-native';
-import { name as appName } from './app.json';
+import { registerRootComponent } from 'expo';
+import { activateKeepAwake } from 'expo-keep-awake';
 import Home from './modules/home/Home.js';
 
-AppRegistry.registerComponent(appName, () => Home);
+if (__DEV__) {
+  activateKeepAwake();
+}
+
+registerRootComponent(Home);
