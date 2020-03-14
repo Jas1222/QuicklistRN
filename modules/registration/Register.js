@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class Home extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.button}>Browse</Text>
-        <Text style={styles.button}>Create</Text>
-      </View>
-    );
-  }
+export const Register = () => {
+  return (
+    <View style={styles.container}>
+      <Text> {"REGISTRATION SCREEN."}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection:'row',
+    flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
@@ -25,6 +22,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     color: '#E61E63'
-  },
-
+  }
 });
