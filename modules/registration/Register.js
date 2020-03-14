@@ -1,9 +1,10 @@
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export const Register = () => {
   return (
     <View style={styles.container}>
-      <Text> {"Welcome."}</Text>
+      <Text> {"REGISTRATION SCREEN."}</Text>
     </View>
   );
 }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { Colors } from '../../Constants/Colors';
 import { StyleSheet, Text, View } from 'react-native';
 
 export const Browse = () => {
   return (
     <View style={styles.container}>
-      <Text> {"Welcome."}</Text>
-      <Text> {"Select your filters from the options below:"}</Text>
+      <Text style={styles.title}> {"Welcome."}</Text>
     </View>
   );
 }
@@ -15,13 +15,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 120
   },
-  button: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: '#E61E63'
+  title: {
+    color: Colors.PRIMARY,
+    fontSize: 40
   }
 });
