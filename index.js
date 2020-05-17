@@ -7,7 +7,8 @@ import { Register } from './modules/registration/Register';
 import { Colors } from './Constants/Colors';
 import { Entypo } from '@expo/vector-icons';
 import { CreateDetailsScreen } from './modules/create/screens/CreateDetailsScreen';
-import { CreateFiltersScreen } from './modules/create/screens/CreateFiltersScreen';
+import { CreateCourseFiltersScreen } from './modules/create/screens/CreateCourseFiltersScreen';
+import { CreateReviewScreen } from './modules/create/screens/CreateReviewScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -40,7 +41,9 @@ const CreateStack = () => {
         headerTintColor: 'white',
         headerTitleStyle: {
           fontWeight: 'bold',
-        }
+        },
+        title: 'Create a Listing',
+        animationEnabled: false
       }}
     >
       <Stack.Screen
@@ -49,7 +52,11 @@ const CreateStack = () => {
       />
       <Stack.Screen
         name="CreateStep2"
-        component={CreateFiltersScreen}
+        component={CreateCourseFiltersScreen}
+      />
+      <Stack.Screen
+        name="CreateStep3"
+        component={CreateReviewScreen}
       />
     </Stack.Navigator>
   )

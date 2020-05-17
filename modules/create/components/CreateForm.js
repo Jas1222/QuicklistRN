@@ -3,15 +3,8 @@ import { StyleSheet, View, TextInput } from 'react-native';
 import { AntDesign, Entypo, SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors } from '../../../Constants/Colors.js'
 
-export const CreateForm = () => {
-    const [title, setTitle] = useState(null);
-    const [author, setAuthor] = useState(null);
-    const [year, setYear] = useState(null);
-    const [isbn, setIsbn] = useState(null);
-    const [price, setPrice] = useState(null);
-    const [description, setDescription] = useState(null);
-
-    const renderTitle = () => {
+export const CreateForm = ({ onTextEntered }) => {
+    const renderTitleRow = () => {
         return (
             <View style={styles.row}>
                 <View style={styles.iconContaniner}>
@@ -24,7 +17,7 @@ export const CreateForm = () => {
 
                 <TextInput
                     style={styles.inputFields}
-                    onChangeText={text => setTitle(text)}
+                    onChangeText={text => onTextEntered({ title: text })}
                     placeholder={"What is the book title?"}
                     underlineColorAndroid={Colors.PRIMARY}
                     maxLength={300}
@@ -33,28 +26,31 @@ export const CreateForm = () => {
         )
     }
 
+    const renderAuthorRow = () => {
+
     return (
-        <View style={styles.formContainer}>
-            {renderTitle()}
-
-            <View style={styles.row}>
-                <View style={styles.iconContaniner}>
-                    <Entypo
-                        name="feather"
-                        color={Colors.PRIMARY_DARK}
-                        size={26}
-                    />
-                </View>
-
-                <TextInput
-                    style={styles.inputFields}
-                    onChangeText={text => setAuthor(text)}
-                    placeholder={"What are the book authors?"}
-                    underlineColorAndroid={Colors.PRIMARY}
-                    maxLength={300}
+        <View style={styles.row}>
+            <View style={styles.iconContaniner}>
+                <Entypo
+                    name="feather"
+                    color={Colors.PRIMARY_DARK}
+                    size={26}
                 />
             </View>
 
+            <TextInput
+                style={styles.inputFields}
+                onChangeText={text => onTextEntered({ author: text })}
+                placeholder={"What are the book authors?"}
+                underlineColorAndroid={Colors.PRIMARY}
+                maxLength={300}
+            />
+        </View>
+    )
+    }
+
+    const renderYearRow = () => {
+        return (
             <View style={styles.row}>
                 <View style={styles.iconContaniner}>
                     <AntDesign
@@ -66,33 +62,41 @@ export const CreateForm = () => {
 
                 <TextInput
                     style={styles.inputFields}
-                    onChangeText={text => setYear(text)}
+                    onChangeText={text => onTextEntered({ year: text })}
                     placeholder={"What year was the book published?"}
                     underlineColorAndroid={Colors.PRIMARY}
                     maxLength={4}
                     keyboardType={'phone-pad'}
                 />
             </View>
+        )
+    }
 
-            <View style={styles.row}>
-                <View style={styles.iconContaniner}>
-                    <MaterialCommunityIcons
-                        name="barcode"
-                        color={Colors.PRIMARY_DARK}
-                        size={26}
-                    />
-                </View>
-
-                <TextInput
-                    style={styles.inputFields}
-                    onChangeText={text => setIsbn(text)}
-                    placeholder={"What is the book ISBN?"}
-                    underlineColorAndroid={Colors.PRIMARY}
-                    maxLength={300}
-                    keyboardType={'phone-pad'}
+    const renderBarcodeRow = () => {
+    return (
+        <View style={styles.row}>
+            <View style={styles.iconContaniner}>
+                <MaterialCommunityIcons
+                    name="barcode"
+                    color={Colors.PRIMARY_DARK}
+                    size={26}
                 />
             </View>
 
+            <TextInput
+                style={styles.inputFields}
+                onChangeText={text => onTextEntered({ isbn: text })}
+                placeholder={"What is the book ISBN?"}
+                underlineColorAndroid={Colors.PRIMARY}
+                maxLength={300}
+                keyboardType={'phone-pad'}
+            />
+        </View>
+    )
+    }
+
+    const renderDescriptionRow = () => {
+        return (
             <View style={styles.row}>
                 <View style={styles.iconContaniner}>
                     <SimpleLineIcons
@@ -104,13 +108,17 @@ export const CreateForm = () => {
 
                 <TextInput
                     style={styles.inputFields}
-                    onChangeText={text => setDescription(text)}
+                    onChangeText={text => onTextEntered({ description: text })}
                     placeholder={"Short description about the condition"}
                     underlineColorAndroid={Colors.PRIMARY}
                     maxLength={3}
                 />
             </View>
+        )
+    }
 
+    const renderPriceRow = () => {
+        return (
             <View style={styles.row}>
                 <View style={styles.iconContaniner}>
                     <Entypo
@@ -122,15 +130,24 @@ export const CreateForm = () => {
 
                 <TextInput
                     style={styles.inputFields}
-                    onChangeText={text => setPrice(text)}
+                    onChangeText={text => onTextEntered({ price: text })}
                     placeholder={"Tap to enter desired price"}
                     underlineColorAndroid={Colors.PRIMARY}
                     maxLength={300}
                     keyboardType={'phone-pad'}
                 />
             </View>
+        )
+    }
 
-
+    return (
+        <View style={styles.formContainer}>
+            {renderTitleRow()}
+            {renderAuthorRow()}
+            {renderYearRow()}
+            {renderBarcodeRow()}
+            {renderDescriptionRow()}
+            {renderPriceRow()}
         </View>
     )
 }
