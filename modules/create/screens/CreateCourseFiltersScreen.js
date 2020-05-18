@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-native-modal';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { Colors } from '../../../Constants/Colors';
-import { mockDegreeFilters } from '../../../service/MockData';
+import { filterData } from '../../../service/FilterData';
 
 export const CreateCourseFiltersScreen = ({ navigation, route }) => {
     const [isModalVisible, setVisible] = useState(false)
@@ -16,7 +16,7 @@ export const CreateCourseFiltersScreen = ({ navigation, route }) => {
     })
 
     useEffect(() => {
-        setDegreeFilters(mockDegreeFilters)
+        setDegreeFilters(filterData)
     }, [])
 
     const toggleModal = () => {
@@ -34,8 +34,6 @@ export const CreateCourseFiltersScreen = ({ navigation, route }) => {
     }
 
     const onButtonPress = () => {
-        // Merge props data with local state
-        route.submissionData
         const updatedData = {
             ...route.params.submissionData,
             ...selectedData
@@ -124,6 +122,7 @@ export const CreateCourseFiltersScreen = ({ navigation, route }) => {
     }
 
     const renderButton = () => {
+        // TODO: VALIDATION
         return (
             <TouchableOpacity style={styles.buttonContainer} onPress={onButtonPress}>
                 <Text style={styles.buttonText}>Review and Confirm</Text>
