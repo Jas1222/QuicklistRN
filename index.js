@@ -11,6 +11,7 @@ import { CreateCourseFiltersScreen } from './modules/create/screens/CreateCourse
 import { CreateReviewScreen } from './modules/create/screens/CreateReviewScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import {initialiseFirebase} from "./service/Service";
 
 if (__DEV__) {
   activateKeepAwake();
@@ -65,12 +66,12 @@ const CreateStack = () => {
 export default class App extends Component {
   constructor(props) {
     super(props)
+    initialiseFirebase()
   }
 
   render() {
     return (
-      <NavigationContainer
-      >
+      <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color, size }) => {

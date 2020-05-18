@@ -111,7 +111,6 @@ export const CreateForm = ({ onTextEntered }) => {
                     onChangeText={text => onTextEntered({ description: text })}
                     placeholder={"Short description about the condition"}
                     underlineColorAndroid={Colors.PRIMARY}
-                    maxLength={3}
                 />
             </View>
         )
