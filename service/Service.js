@@ -1,4 +1,5 @@
 import Firebase from "firebase";
+import {parseBooksData} from "../utils/Utils";
 
 export function initialiseFirebase() {
     const firebaseConfig = {
@@ -30,6 +31,15 @@ export async function addListing(listing) {
     });
 }
 
-export async function getCourse() {
+export async function fetchBookDetails(barcode) {
+    const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${barcode}&country=UK`
 
+    try {
+        const response = await fetch(url);
+        const data = await response.json()
+        console.warn(data)
+        return parseBooksData(data, barcode)
+    } catch (err) {
+        console.warn('messed up fetching data from GBooks API', err)
+    }
 }

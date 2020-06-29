@@ -3,11 +3,12 @@ import { StyleSheet, View, TextInput } from 'react-native';
 import { AntDesign, Entypo, SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors } from '../../../Constants/Colors.js'
 
-export const CreateForm = ({ onTextEntered }) => {
+export const CreateForm = ({ onTextEntered, book }) => {
+
     const renderTitleRow = () => {
         return (
             <View style={styles.row}>
-                <View style={styles.iconContaniner}>
+                <View style={styles.iconContainer}>
                     <AntDesign
                         name="book"
                         color={Colors.PRIMARY_DARK}
@@ -21,6 +22,7 @@ export const CreateForm = ({ onTextEntered }) => {
                     placeholder={"What is the book title?"}
                     underlineColorAndroid={Colors.PRIMARY}
                     maxLength={300}
+                    value={ book ? book.title : undefined}
                 />
             </View>
         )
@@ -30,7 +32,7 @@ export const CreateForm = ({ onTextEntered }) => {
 
     return (
         <View style={styles.row}>
-            <View style={styles.iconContaniner}>
+            <View style={styles.iconContainer}>
                 <Entypo
                     name="feather"
                     color={Colors.PRIMARY_DARK}
@@ -44,6 +46,7 @@ export const CreateForm = ({ onTextEntered }) => {
                 placeholder={"What are the book authors?"}
                 underlineColorAndroid={Colors.PRIMARY}
                 maxLength={300}
+                value={ book ? book.author.join() : undefined}
             />
         </View>
     )
@@ -52,7 +55,7 @@ export const CreateForm = ({ onTextEntered }) => {
     const renderYearRow = () => {
         return (
             <View style={styles.row}>
-                <View style={styles.iconContaniner}>
+                <View style={styles.iconContainer}>
                     <AntDesign
                         name="calendar"
                         color={Colors.PRIMARY_DARK}
@@ -67,6 +70,8 @@ export const CreateForm = ({ onTextEntered }) => {
                     underlineColorAndroid={Colors.PRIMARY}
                     maxLength={4}
                     keyboardType={'phone-pad'}
+                    value={ book ? book.year : undefined}
+
                 />
             </View>
         )
@@ -75,7 +80,7 @@ export const CreateForm = ({ onTextEntered }) => {
     const renderBarcodeRow = () => {
     return (
         <View style={styles.row}>
-            <View style={styles.iconContaniner}>
+            <View style={styles.iconContainer}>
                 <MaterialCommunityIcons
                     name="barcode"
                     color={Colors.PRIMARY_DARK}
@@ -90,6 +95,7 @@ export const CreateForm = ({ onTextEntered }) => {
                 underlineColorAndroid={Colors.PRIMARY}
                 maxLength={300}
                 keyboardType={'phone-pad'}
+                value={ book ? book.isbn : undefined}
             />
         </View>
     )
@@ -98,7 +104,7 @@ export const CreateForm = ({ onTextEntered }) => {
     const renderDescriptionRow = () => {
         return (
             <View style={styles.row}>
-                <View style={styles.iconContaniner}>
+                <View style={styles.iconContainer}>
                     <SimpleLineIcons
                         name="pencil"
                         color={Colors.PRIMARY_DARK}
@@ -119,7 +125,7 @@ export const CreateForm = ({ onTextEntered }) => {
     const renderPriceRow = () => {
         return (
             <View style={styles.row}>
-                <View style={styles.iconContaniner}>
+                <View style={styles.iconContainer}>
                     <Entypo
                         name="price-tag"
                         color={Colors.PRIMARY_DARK}
@@ -154,9 +160,11 @@ export const CreateForm = ({ onTextEntered }) => {
 const styles = StyleSheet.create({
     formContainer: {
         marginTop: 40,
-        margin: 50
+        margin: 50,
+        //TODO bottom feels hacky
+        paddingRight: 40
     },
-    iconContaniner: {
+    iconContainer: {
         marginTop: 15,
     },
     row: {
