@@ -37,7 +37,7 @@ export async function fetchBookDetails(barcode) {
     try {
         const response = await fetch(url);
         const data = await response.json()
-        console.warn(data)
+
         return parseBooksData(data, barcode)
     } catch (err) {
         console.warn('messed up fetching data from GBooks API', err)

@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {Colors} from '../../../Constants/Colors';
 import {CreateForm} from '../components/CreateForm';
@@ -8,7 +8,7 @@ export const CreateDetailsScreen = ({navigation, route}) => {
 
     useEffect(() => {
         setSubmissionData(route.params.book)
-    })
+    }, [])
 
     const onPress = () => {
         navigation.navigate('CreateStep2', {
@@ -28,8 +28,7 @@ export const CreateDetailsScreen = ({navigation, route}) => {
     const renderHeader = () => {
         return (
             <View style={styles.headerContainer}>
-                <Text style=
-                          {styles.title}>Step 1</Text>
+                <Text style={styles.title}>Step 1</Text>
                 <Text style={styles.subtitle}>Enter the book details:</Text>
             </View>
         )

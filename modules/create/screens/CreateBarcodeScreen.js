@@ -17,7 +17,6 @@ export default function CreateBarcodeScree({ navigation }) {
     const handleBarCodeScanned = async ({ data }) => {
         setScanned(true);
         const result = await fetchBookDetails(data)
-        console.warn('result', result)
         navigation.navigate('CreateStep1', {book: result})
     };
 
