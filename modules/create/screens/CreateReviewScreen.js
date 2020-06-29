@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Colors } from '../../../Constants/Colors';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import {addListing} from "../../../service/Service";
 
 export const CreateReviewScreen = ({route}) => {
     const onButtonPress = () => {
-        console.warn(route.params.submissionData)
         addListing(route.params.submissionData)
     }
 

@@ -12,6 +12,7 @@ import { CreateReviewScreen } from './modules/create/screens/CreateReviewScreen'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import {initialiseFirebase} from "./service/Service";
+import CreateBarcodeScreen from "./modules/create/screens/CreateBarcodeScreen";
 
 if (__DEV__) {
   activateKeepAwake();
@@ -47,6 +48,10 @@ const CreateStack = () => {
         animationEnabled: false
       }}
     >
+        <Stack.Screen
+            name="BarcodeScanner"
+            component={CreateBarcodeScreen}
+        />
       <Stack.Screen
         name="CreateStep1"
         component={CreateDetailsScreen}
